@@ -1,0 +1,1 @@
+/data/hjy1312/Downloads/caffe-master/build/tools/caffe test --model=/data/hjy1312/data/RESNET/ResNet-on-Cifar10-master/script/resnet_model/test.prototxt --weights=/data/hjy1312/data/RESNET/ResNet-on-Cifar10-master/script/resnet_model/snapshot_iter_30000.caffemodel

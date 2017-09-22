@@ -1,0 +1,901 @@
+<!DOCTYPE html>           
+
+<script>
+    (function (context) {
+        var data = {};
+        var url = '//imgstat.baidu.com/17.gif';
+        var start = +new Date;
+        var createQuery = function (data) {
+            var ret = [];
+            for (var key in data) {
+                ret.push(key + '=' + data[key]);
+            }
+            return ret.join('&');
+        };
+
+        var _mergeCommPara = function (data) {
+            data.etype = 'speed';
+            data.page = 'result';
+            data.logid = "13890932421618734054";
+            data.sid = 'cf682d6ce12a14743a3cd02737dbef4161f9c192';
+            data.wh = window.screen.width + 'x' + window.screen.height ;
+            data.sampid = '69';
+            data.app = 'searchresult';
+            data.spat = 0 + '-' + '';
+            data.protocol = window.location.protocol.replace(':', '');
+            if ('0' - 0) {
+                data.ishttps = '0';
+            }
+            
+            data.sync = "";
+            return data;
+        };
+        var _profiles = {
+            'slider': {
+                _url: '//imgstat.baidu.com/17.gif',
+                etype: 'slide'
+            }
+        };
+        var speed = {
+            set: function (key, value) {
+                if (key) {
+                    data[key] = value || 0;
+                }
+            },
+            get: function (key) {
+                return data[key] || ('start' === key && start);
+            },
+            mark: function (key, value, ts) {
+                if (undefined === value) {
+                    value = new Date - start;
+                }
+                if (true === ts) {
+                    value = value - start;
+                }
+                data[key] = value;
+            },
+            send: function (ext) {
+                if (ext) {
+                    for (var key in ext) {
+                        data[key] = ext[key];
+                    }
+                }
+                _mergeCommPara(data);
+                var queryString = createQuery(data);
+                new Image().src = url + '?' + queryString;
+            },
+            loadmark: function () {
+                value = new Date - start;
+
+                if (speed.firstScCount) {
+                    speed.firstScCount += 1;
+                }else{
+                    speed.firstScCount = 1;
+                }
+
+                data['firstSc'] = value;
+
+            },
+            log: function (profile, data) {
+                var queryString = createQuery(data);
+                var pf = _profiles[profile];
+                var a = [];
+
+                _mergeCommPara(data);
+                for (var p in pf) {
+                    if (p.indexOf('_') !== 0) {
+                        data[p] = pf[p];
+                    }
+
+                }
+                for (var p in data) {
+                    a.push(p + '=' + data[p]);
+                }
+
+
+                (new Image).src = pf._url + '?' + a.join('&');
+            }
+        };
+        context.speed = speed;
+        speed.firstScCount = 0;
+        (function () {
+            window.logid = "13890932421618734054";
+            loaded = 0;
+            var addWindowEvent = window.addEventListener ?
+                function(type, fn) { window.addEventListener(type, fn, false); } :
+                function(type, fn) { window.attachEvent('on' + type, fn); };
+            addWindowEvent('beforeunload', function () {
+                if (!loaded) {
+                    speed.mark('leave');
+                    speed.send();
+                }
+            });
+
+            addWindowEvent('load', function () {
+                loaded = 1;
+            });
+        })();
+    })(window);
+</script>
+<script>
+    // ala进入打点
+    try {
+        if (!window._alaEnter) {
+            window._alaEnter = true;
+            function query2Json(query) {
+                var json = {};
+                var search = query.split("&");
+                for (var i = search.length - 1; i >= 0; i--) {
+                    var s = search[i].split('=');
+                    json[s[0]] = s[1];
+                }
+                return json;
+            }
+            var query = query2Json((location.search || '').replace('?', ''));
+            if (+query.hs && query.tn === 'baiduimage') {
+                var payload = 'dsp=pc&tn=result&hs=' + query.hs;
+                (new Image()).src = '//image.baidu.com/pv/pv.gif?' + payload + '&type=enter&t=' + (+new Date);
+                window._alaEnter = function (type) {
+                    (new Image()).src = '//image.baidu.com/pv/pv.gif?' + payload
+                        + '&type=' + type + '&t=' + (+new Date);
+                };
+                var sid = "6cdd5ac33e519edd01805f6191f5983b1bbc4648";
+                if (window.localStorage
+                    && window.localStorage.sid
+                    && window.localStorage.sid !== sid) {
+                    window._alaEnter('change');
+                }
+                window.localStorage.sid = sid;
+            }
+        }
+    } catch(e) {}
+</script>
+   <html>   <!--STATUS OK-->  <head>  
+<meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<noscript>
+<meta http-equiv="refresh" content="0;url=/i?ct=201326592&lm=-1&tn=baiduimagenojs&ipn=rnj&pv=&word=%E7%8B%97&z=0&pn=0&rn=20&cl=2&ie=utf-8">
+
+<style>table,.p{display:none}</style>
+
+</noscript>
+ <title>
+狗_百度图片搜索</title>  <script>
+    void function(a,b,c,d,e,f,g){a.alogObjectName=e,a[e]=a[e]||function(){(a[e].q=a[e].q||[]).push(arguments)},a[e].l=a[e].l||+new Date,d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d;var h=!0;if(a.alogObjectConfig&&a.alogObjectConfig.sample){var i=Math.random();a.alogObjectConfig.rand=i,i>a.alogObjectConfig.sample&&(h=!1)}h&&(f=b.createElement(c),f.async=!0,f.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),g=b.getElementsByTagName(c)[0],g.parentNode.insertBefore(f,g))}(window,document,"script","/hunter/alog/alog.min.js","alog"),void function(){function a(){}window.PDC={mark:function(a,b){alog("speed.set",a,b||+new Date),alog.fire&&alog.fire("mark")},init:function(a){alog("speed.set","options",a)},view_start:a,tti:a,page_ready:a}}();
+    void function(n){var o=!1;n.onerror=function(n,e,t,c){var i=!0;return!e&&/^script error/i.test(n)&&(o?i=!1:o=!0),i&&alog("exception.send","exception",{msg:n,js:e,ln:t,col:c}),!1},alog("exception.on","catch",function(n){alog("exception.send","exception",{msg:n.msg,js:n.path,ln:n.ln,method:n.method,flag:"catch"})})}(window);
+</script>     
+   <script>
+        var Ihttps_agent_config = {"http:\/\/nssug.baidu.com":"https:\/\/sp1.baidu.com\/8qUZeT8a2gU2pMbgoY3K\/su","http:\/\/img.baidu.com":"https:\/\/gss2.bdstatic.com\/70cFsjip0QIZ8tyhnq","http:\/\/himg.bdimg.com":"https:\/\/ss1.bdstatic.com\/7Ls0a8Sm1A5BphGlnYG","http:\/\/apps.bdimg.com":"https:\/\/ss0.bdstatic.com\/9_QWf8Sm1A5BphGlnYG","http:\/\/f3.baidu.com":"https:\/\/sp3.baidu.com\/-uV1bjeh1BF3odCf","http:\/\/bzclk.baidu.com":"https:\/\/gsp0.baidu.com\/9q9JcDHa2gU2pMbgoY3K","http:\/\/img0.imgtn.bdimg.com":"https:\/\/ss0.bdstatic.com\/70cFvHSh_Q1YnxGkpoWK1HF6hhy","http:\/\/img1.imgtn.bdimg.com":"https:\/\/ss1.bdstatic.com\/70cFvXSh_Q1YnxGkpoWK1HF6hhy","http:\/\/img2.imgtn.bdimg.com":"https:\/\/ss2.bdstatic.com\/70cFvnSh_Q1YnxGkpoWK1HF6hhy","http:\/\/img3.imgtn.bdimg.com":"https:\/\/ss3.bdstatic.com\/70cFv8Sh_Q1YnxGkpoWK1HF6hhy","http:\/\/img4.imgtn.bdimg.com":"https:\/\/ss0.bdstatic.com\/70cFuHSh_Q1YnxGkpoWK1HF6hhy","http:\/\/img5.imgtn.bdimg.com":"https:\/\/ss1.bdstatic.com\/70cFuXSh_Q1YnxGkpoWK1HF6hhy","http:\/\/bdimg.share.baidu.com":"https:\/\/gss0.baidu.com\/9rA4cT8aBw9FktbgoI7O1ygwehsv","http:\/\/dispatcher.video.qiyi.com":"https:\/\/gss0.bdstatic.com\/-LsZfDe52w9JkxG9m9iS_HFjgAkrreHg-_","http:\/\/passport.bdimg.com":"https:\/\/ss0.bdstatic.com\/5LMZfyabBhJ3otebn9fN2DJv"};
+    </script> <script type="text/javascript" src="//img0.bdstatic.com/static/common/mod_6f6741d.js"></script> 
+<script>
+    //记录页面开始时间, 也用于vs埋点
+    window.pageStartTime = (new Date()).getTime();
+    window.shootBannerData = [];
+    window.isBigFu = '';
+   // window.scrollTo(0, 0);
+</script>
+
+<script>
+    // 时效性热点
+        </script>
+ <link rel="stylesheet" type="text/css" href="//img1.bdstatic.com/static/common/pkg/co_e30f6c9.css"/><link rel="stylesheet" type="text/css" href="//img1.bdstatic.com/static/searchresult/pkg/result_2109f7c.css"/><link rel="stylesheet" type="text/css" href="//img1.bdstatic.com/static/common/widget/ui/slider/slider_ecce195.css"/><link rel="stylesheet" type="text/css" href="//img0.bdstatic.com/static/common/widget/ui/userInfo/userInfo_5bd6198.css"/><link rel="stylesheet" type="text/css" href="//img0.bdstatic.com/static/searchresult/widget/ui/base/view/AvFilterView/AvFilterView_5709328.css"/><link rel="stylesheet" type="text/css" href="//img0.bdstatic.com/static/searchresult/widget/ui/base/view/AvMuiltSizeFilterView/AvMuiltSizeFilterView_5a57aa1.css"/><link rel="stylesheet" type="text/css" href="//img0.bdstatic.com/static/searchresult/widget/ui/base/view/AvTypeFilterView/AvTypeFilterView_cea6b92.css"/><link rel="stylesheet" type="text/css" href="//img1.bdstatic.com/static/searchresult/widget/ui/base/view/AvColorWallFilterView/AvColorWallFilterView_cf8a646.css"/><link rel="stylesheet" type="text/css" href="//img2.bdstatic.com/static/searchresult/widget/ui/base/view/AvColorFilterView/AvColorFilterView_5b1da63.css"/><link rel="stylesheet" type="text/css" href="//img2.bdstatic.com/static/common/widget/loginbar/loginbar_e8a6507.css"/></head>  <script> alog('speed.set', 'ht', +new Date); </script>  <body class=""> <script type="text/javascript">require.siteNS && require.siteNS(["searchresult", "common"]);require.resourceMap({"res":{"searchresult:widget/ui/app/noResultPage.js":{"url":"//img0.bdstatic.com/static/searchresult/widget/ui/app/noResultPage_ee2374d.js","deps":["common:widget/ui/base/base.js","searchresult:widget/ui/controls/relsearchBox/relsearchBox.js","common:widget/ui/userInfo/userInfo.js","searchresult:widget/ui/controls/hotwordBox/hotwordBox.js","searchresult:widget/ui/controls/suggBox/suggBox.js","searchresult:widget/ui/statistic/statistic.js"]},"common:widget/shitu/static/animate.js":{"url":"//img1.bdstatic.com/static/common/widget/shitu/static/animate_e65390e.js","deps":["common:widget/ui/base/base.js"]},"common:widget/shitu/run.js":{"url":"//img0.bdstatic.com/static/common/widget/shitu/run_eb8aed7.js","deps":["common:widget/ui/base/base.js","common:widget/ui/utils/utils.js","common:widget/shitu/static/animate.js"]},"common:widget/ui/historyRecord/historyRecord.js":{"url":"//img2.bdstatic.com/static/common/widget/ui/historyRecord/historyRecord_31e31e1.js","deps":["common:widget/ui/base/base.js","common:widget/ui/base/events.js"]},"common:widget/ui/loginBox/loginBox.js":{"url":"//img0.bdstatic.com/static/common/widget/ui/loginBox/loginBox_ea459f5.js"},"common:widget/loginbar/loginbar.js":{"url":"//img2.bdstatic.com/static/common/widget/loginbar/loginbar_f08c999.js","deps":["common:widget/ui/base/base.js","common:widget/ui/loginBox/loginBox.js","common:widget/ui/base/EventDispatcher.js"]},"common:widget/ui/sourcehttps/sourcehttps.js":{"url":"//img1.bdstatic.com/static/common/widget/ui/sourcehttps/sourcehttps_a8b93d5.js"},"common:widget/ui/fmCheck/fmCheck.js":{"url":"//img1.bdstatic.com/static/common/widget/ui/fmCheck/fmCheck_e6197fc.js","deps":["common:widget/ui/base/base.js"]},"common:widget/ui/durationStat/durationStat.js":{"url":"//img0.bdstatic.com/static/common/widget/ui/durationStat/durationStat_d292e9f.js","deps":["common:widget/ui/utils/utils.js","common:widget/ui/base/base.js"]}}});</script> 
+
+<div id="search" class="">
+<script>
+        (function() {
+            var search = document.getElementById('search');
+            var width = window.innerWidth
+                || (document.documentElement && document.documentElement.clientWidth)
+                || (document.body && document.body.clientWidth);
+            if (search && width < 1217) {
+                search.className = 'narrow ' + search.className;
+            }
+        })();
+    </script>
+<div class="s_search">
+<a href="/" class="s_logo">
+<img src="//img0.bdstatic.com/static/searchresult/img/logo-2X_b99594a.png" alt="到 百度图片首页 来" title="返回 百度图片首页">
+</a>
+<div class="s_nav">
+<form action="/search/index" class="searchform" name="f1" onsubmit="return s_submit(this,true)">
+<input type="hidden" name="tn" value="baiduimage">
+<input type="hidden" name="ipn" value="r">
+<input name="ct" type="hidden" value="201326592">
+<input name="cl" type="hidden" value="2">
+<input name="lm" type="hidden" value="-1">
+<input name="st" type="hidden" value="-1">
+<input name="fm" type="hidden" value="result">
+<input name="fr" type="hidden" value="">
+<input name="sf" type="hidden" value="1">
+<input name="fmq" type="hidden" value="">
+<input name="pv" type="hidden" value="">
+<input name="ic" type="hidden" value="0">
+<input name="nc" type="hidden" value="1">
+<input name="z" type="hidden" value="">
+<input name="se" type="hidden" value="">
+<input name="showtab" type="hidden" value="0">
+<input name="fb" type="hidden" value="0">
+<input name="width" type="hidden" value="">
+<input name="height" type="hidden" value="">
+<input name="face" type="hidden" value="0">
+<input name="istype" type="hidden" value="2">
+<input name="ie" type="hidden" value="utf-8">
+<input name="ctd" type="hidden" value="">
+<span class="s_ipt_wr"><input id="kw" name="word" class="s_ipt" value="狗" autocomplete="off" onfocus="this.parentNode.className='s_ipt_wr active'" onblur="this.parentNode.className='s_ipt_wr'"/></span><span class="s_btn_wr"><input type="submit" class="s_btn" onmousedown="this.className='s_btn s_btn_h'" onmouseout="this.className='s_btn'"  value="百度一下"   /></span>
+</form><div id="stcontent" class="common-shitu"> <a class="sttb" hidefocus="true" id="sttb" href="javascript:void(0)" title="上传图片，搜索相关信息"> <img class="st_camera_off" src="//img1.bdstatic.com/static/common/widget/shitu/images/camera_new_off_a552294.png" width="20" height="20"> <img class="st_camera_on" src="//img2.bdstatic.com/static/common/widget/shitu/images/camera_new_on_4e3e250.png" width="20" height="20"> <div class="st_tips" id="stTipsBox">上传图片，搜索相关信息</div> <div class="st_tips_arrow_in" id="stTipArrowIn"></div> <div class="st_tips_arrow_out" id="stTipArrowOut"></div> </a> <div id="stsug" class="stsug" style="display:none"> <div id="sthead"><span>识图</span><img id="sthelp" width="13" height="13" src="//img2.bdstatic.com/static/common/widget/shitu/images/mark_b68ff2e.png" /></div> <div class="stf"> <form id="form2" target="_self" enctype="multipart/form-data" name="form2"> <a id="uploadImg" href="javascript:void(0)" data-nsclick="p=1811102&tn=index&event_type=shitu.search.click&pos=upload">本地上传<input type="file" name="file" id="stfile" size="2"></a> <div class="st_dragtg" id="dragtg" style="display:none;">提示：您也可以把图片拖到这里</div> <input id="shitu2" name="pos" value="" type="hidden"> <input name="uptype" value="upload_pc" type="hidden"> <input name="fm" value="index" type="hidden"> </form> <form id="form1" target="_self" enctype="multipart/form-data" method="get" name="form1"> <div id="sturl"> <span class="stuwr"> <input type="text" id="stuurl" placeholder="在此处粘贴图片网址" value="" autocomplete="off"  class="stuurl" name="objurl"> </span> <span class="stsb"> <input type="submit" id="sbobj" class="stsb2" onmousedown="this.className='stsb2 stsb3'" onmouseout="this.className='stsb2'" onmouseover="this.className='stsb2 stsb4'" value="识图一下"> </span> </div> <input name="filename" id="filename" value="" type="hidden"> <input name="rt" value="0" type="hidden"> <input name="rn" value="10" type="hidden"> <input id="stftn" name="ftn" value="wantu" type="hidden"> <input name="ct" value="1" type="hidden"> <input name="stt" value="0" type="hidden"> <input name="tn" value="shituresultpc" type="hidden"> <input id="shitu1" name="uptype" value="paste" type="hidden"> <input name="fm" value="index" type="hidden"> </form> </div> <div class="drag-text-tip" id="dttip">拖拽图片到此处试试</div> <div id="stmore" style="display:none;"> <div class="stmore-header">百度识图</div> <ul> <li>识别人物、搜索服饰、寻找高清素材、浏览相似美图，尽在百度识图!</li> </ul> <div class="stmore_arrow_in"></div> <div class="stmore_arrow_out"></div> </div> <a id="closest" href="javascript:void(0);" title="关闭"></a> <div id="point" style="display:none;"> <img src="//img1.bdstatic.com/img/image/shitu/feimg/uploading.gif" /><span>正在识别中，请稍候...</span> <a id="cancelst" href="javascript:void(0);" title="取消"></a> </div> <div class="undrag-text-tip" id="undragtip"> <p>抱歉，Safari不支持拖拽识图。<br/> 请保存图片到本地，通过本地上传或在搜索框粘贴图片url进行识图。</p> </div> <div id="dragtip" style="display:none;"> <span>请拖拽图片到此处</span> <div class="drag_dot_area drag_dot_left_top"></div> <div class="drag_dot_area drag_dot_left_bottom"></div> <div class="drag_dot_area drag_dot_right_top"></div> <div class="drag_dot_area drag_dot_right_bottom"></div> <a id="cancelst" href="javascript:void(0);" title="取消"></a> </div> <div class="left-border"></div> <div class="right-border"></div> </div> <div id="mock-stsug"></div> </div>  </div>
+<div id="imgfilter">
+<a id="imgfilter-btn" class="filter-open" href="javascript:;">
+<span class="imgfilter-text">图片筛选</span>
+<span class="imgfilter-arrow"></span>
+</a>
+<div id="filter-holder" style="display:none">
+<span class="holder-arrow"></span>
+<div id="top-filter-hoder">
+<div id="filter-container">
+<div class="filter" id="filter">
+<div id="sizeFilter" class="subFilter sizeFilter"></div>
+<div id="colorFilter" class="subFilter"></div>
+<div id="typeFilter" class="subFilter"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id='userInfo'>
+<a target='_blank' href='http://www.baidu.com/'>百度首页</a>
+</div>
+</div>
+<script>
+var commonHeaderConf = {
+	sugProdName: "image",
+	searchInputId: "kw"
+};
+void function(w){
+	window.setHeadUrl= function(o){
+		var links = {
+		i_news:['word','http://news.baidu.com/ns?tn=news&cl=2&rn=20&ct=1&ie=utf-8',1],
+        i_webpage:['wd','https://www.baidu.com/s?ie=utf-8',1],
+		i_tieba:['kw','http://tieba.baidu.com/f?ie=utf-8',1],
+		i_zhidao:['word','http://zhidao.baidu.com/q?ct=17&pn=0&tn=ikaslist&rn=10&lm=0&ie=utf-8',1],
+		i_mp3:['key','http://music.baidu.com/search?fr=img&ie=utf-8',1],
+		i_video:['word','http://v.baidu.com/v?ct=301989888&s=25&ie=utf-8',1],
+		i_map:['wd','http://map.baidu.com/?newmap=1&ie=utf-8&s=s',2],
+		i_baike:['word','http://baike.baidu.com/search/word?pic=1&sug=1&enc=utf8',1],
+		i_wenku:['word','http://wenku.baidu.com/search?ie=utf-8',1]
+		},
+		name = o.name,
+		items = links[name],
+		kw = document.getElementById(w),
+		reg = new RegExp('^\\s+|\\s+\x24'),
+		key = kw.value.replace(reg,'');
+		if(items){
+			if(key.length > 0){
+				var wd = items[0],
+					url = items[1],
+					proSign = items[2];
+				url = pro(url,wd,key,proSign);
+				o.href = url;
+
+			}else{
+				o.href = o.href.match(new RegExp('^http:\/\/.+\\.baidu\\.com'))[0];
+			}
+            if(!o.clickHandle){
+                o.onclick = function(e){
+                    if(typeof p === 'function'){
+                        e = e || window.event;
+                        p(e, 52, {isAsyn : true, to : this.name, href : this.href});
+                    }
+
+                };
+                o.clickHandle = true;
+            }
+		}
+		function pro(url,wd,key,proSign){
+			/*日文片假部分乱码\u30f7--\u30fb,转换成实体*/
+			function HtmlEncodeAndComponent(inTXT){
+				/*地图，uri编码，不转换成实体*/
+				if(proSign==2){
+					return encodeURIComponent(key);
+				}
+				var hexArray =[],entityCode = '',finalKey = '', character='',tmpInt=0;
+				for(i=0; i<inTXT.length; i++){
+					character = inTXT.charCodeAt(i).toString(16).toUpperCase();
+					tmpInt = parseInt(character,16);
+					if(tmpInt>=0x30f7&&tmpInt<=0x30fb){
+						decCode = tmpInt.toString(10);
+						entityCode = '&#'+decCode+';';
+						finalKey += encodeURIComponent(entityCode);
+
+					}else{
+						entityCode = inTXT.charAt(i);
+						if(proSign>0){
+							finalKey += encodeURIComponent(entityCode);
+						}else{
+							finalKey += entityCode;
+						}
+					}
+				}
+				return finalKey;
+			}
+			var prefix = (url.indexOf('?')>0?'&':'?') + wd +'=';
+			if(proSign == 2){
+				prefix = encodeURIComponent(prefix);
+			}
+			key = HtmlEncodeAndComponent(key);
+			return url + prefix + key;
+		}
+	}
+}(commonHeaderConf.searchInputId);
+</script>
+<div class="s_tab">
+<a href="https://www.baidu.com/"  onmousedown="setHeadUrl(this)" name="i_webpage" >网页</a>
+<a href="http://news.baidu.com/" onmousedown="setHeadUrl(this)" name="i_news">新闻</a>
+<a href="http://tieba.baidu.com/" onmousedown="setHeadUrl(this)" name="i_tieba">贴吧</a>
+<a href="http://zhidao.baidu.com/" onmousedown="setHeadUrl(this)" name="i_zhidao" >知道</a>
+<a href="http://music.baidu.com/" onmousedown="setHeadUrl(this)" name="i_mp3" class="eng">音乐</a>
+<b>图片</b>
+<a href="http://v.baidu.com/" onmousedown="setHeadUrl(this)" name="i_video" >视频</a>
+<a href="http://map.baidu.com/" onmousedown="setHeadUrl(this)" name="i_map" >地图</a>
+<a href="http://wenku.baidu.com/" onmousedown="setHeadUrl(this)" name="i_wenku">文库</a>
+<a href="https://www.baidu.com/more/" onmousedown="setHeadUrl(this)" name="i_more">更多»</a>
+</div>
+<div id="topInfoBar">
+<div id="topRS">
+<em class="pull-rs-title">相关搜索：</em><a class="pull-rs" title="查看 微笑的狗恐怖原图"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E5%BE%AE%E7%AC%91%E7%9A%84%E7%8B%97%E6%81%90%E6%80%96%E5%8E%9F%E5%9B%BE&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">微笑的狗恐怖原图</a><a class="pull-rs" title="查看 世界上最恐怖的狗"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E4%B8%96%E7%95%8C%E4%B8%8A%E6%9C%80%E6%81%90%E6%80%96%E7%9A%84%E7%8B%97&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">世界上最恐怖的狗</a><a class="pull-rs" title="查看 世界上最漂亮的狗"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E4%B8%96%E7%95%8C%E4%B8%8A%E6%9C%80%E6%BC%82%E4%BA%AE%E7%9A%84%E7%8B%97&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">世界上最漂亮的狗</a><a class="pull-rs" title="查看 卡通狗"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E5%8D%A1%E9%80%9A%E7%8B%97&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">卡通狗</a><a class="pull-rs" title="查看 哈巴狗"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E5%93%88%E5%B7%B4%E7%8B%97&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">哈巴狗</a><a class="pull-rs" title="查看 世界上最萌的小宠物"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E4%B8%96%E7%95%8C%E4%B8%8A%E6%9C%80%E8%90%8C%E7%9A%84%E5%B0%8F%E5%AE%A0%E7%89%A9&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">世界上最萌的小宠物</a><a class="pull-rs" title="查看 狗蛋"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E7%8B%97%E8%9B%8B&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">狗蛋</a><a class="pull-rs" title="查看 秋田犬"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E7%A7%8B%E7%94%B0%E7%8A%AC&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">秋田犬</a><a class="pull-rs" title="查看 柯基"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%9F%AF%E5%9F%BA&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">柯基</a><a class="pull-rs" title="查看 狼"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E7%8B%BC&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">狼</a><a class="pull-rs" title="查看 累成狗表情包"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E7%B4%AF%E6%88%90%E7%8B%97%E8%A1%A8%E6%83%85%E5%8C%85&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">累成狗表情包</a><a class="pull-rs" title="查看 蜱虫狗"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E8%9C%B1%E8%99%AB%E7%8B%97&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">蜱虫狗</a><a class="pull-rs" title="查看 拉布拉多"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%8B%89%E5%B8%83%E6%8B%89%E5%A4%9A&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">拉布拉多</a><a class="pull-rs" title="查看 狗带"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E7%8B%97%E5%B8%A6&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">狗带</a><a class="pull-rs" title="查看 狗身上有蜱虫怎么办"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E7%8B%97%E8%BA%AB%E4%B8%8A%E6%9C%89%E8%9C%B1%E8%99%AB%E6%80%8E%E4%B9%88%E5%8A%9E&hs=0&oriquery=%25E7%258B%2597&ofr=%25E7%258B%2597&sensitive=0">狗身上有蜱虫怎么办</a></div>
+<div id="timeliness" class="hotpot-container">
+</div>
+<script type="text/juicer" id="timeliness-tpl">
+    <div id="timeliness-bless">
+        <div class="blessing-img-wrapper">
+            <img class="blessing-img" src="${icon.normal}" alt="" />
+            <img class="blessing-img icon-zoomup" src="${icon.normal}" alt="" />
+        </div>
+        <span class="blessing-content">
+            ${title}
+        </span>
+        <div class="blessing-count-wrapper">
+            (<span class="blessing-count"></span>人)
+        </div>
+    </div>
+    <div class="egg">
+        <img class="blessing-img-egg" src="${egg}" alt="" />
+    </div>
+</script>
+</div>
+<div id="specialQuery"></div>
+<div id="browser-hotword"></div>
+
+</div>
+ 
+
+<script>
+    window.vsid = 'b7b370ff5e2672ba0af809cc7dbc98b260c991da';
+</script>
+<div id="wrapper">
+<div id="pnlBeforeContent">
+<div class="news-slider"></div>
+<div id="smeContainer" style="display:none;">
+</div>
+</div>
+<div id="imgContainer" class="">
+<div id="timeliness-title">
+<img class="blessing-img guideIcon" src="">
+<span class="timeliness-desc"></span>
+</div>
+<div id="pnlBeforeImgList">
+<div class="memory-con" id="memoryBar" style="display: none;">您收藏时已经看到第<span class="memory-page">10</span>页，<span><a class="memory-link">点击直达</a></span><a class="memory-close"></a></div>
+</div>
+<div id="specialRecommend"></div>
+
+<div id="imgid">
+</div>
+<div id="lastPage" style="position:relative;overflow:hidden;padding-left:50px;zoom:1;display:none;">
+为给您提供最相关的图片结果，百度已省略与以上结果相类似的图片，您可<a href="/">点此查看更多搜索结果</a>。</div>
+<div id="ajaxInfo"></div>
+<div id="noPage" >
+<div id="dataNone" style="margin:0 0 0 15px;font-size:14px;line-height:20px;">
+抱歉，在该筛选条件下，没有找到与<font color="#C60A00">狗</font>相关的图片。</div>
+<div id="stdNone" style="margin:0 0 0 15px;font-size:14px;line-height:20px;">
+<br>
+<br>
+<font class="fB" style="font-size:14px">百度建议您：</font>
+<div style="font-size:14px;margin-top:0px;">
+<li id="listSetDefault">将筛选功能<a href="/search/index?ct=201326592&z=&s=&tn=baiduimage&ipn=r&word=%E7%8B%97&ie=utf-8&oe=utf-8&lm=-1&st=-1&z=&se=0&fr=&pn=0&width=&height=&face=0&ct=503316480" onclick="" >恢复默认状态</a></li>
+<li>修改当前的筛选条件</li>
+<li >看看输入的文字是否有误</li>
+</div>
+<div id=DivPost style="margin-top:0px;margin-left:15px;"></div>
+</div>
+</div>
+</div>
+<div style="clear:both;"></div>
+<p href="javascript:void(0);" id="loading"><img style="width:50px;height:54px;"/></p>
+<div id="pageMoreWrap">
+<a href="javascript:void(0);" onmousedown="p(null,499,{domid:'pageMore',type:'click'})" id="pageMore">加载更多图片</a>
+<div id="resultInfo">找到相关图片约1,390,000张</div>
+</div><div id="pnlAfterContent" style="display:none">
+<div id="cmsimage">
+<div id="hotWordDiv"></div>
+</div>
+<div id="relecom54">
+</div>
+</div>
+</div>
+<div id="loginbar" style="display:none;"> <div class="loginbar-inner"> <div class="login-png"></div> <a class="baidulogin" href="javascript:;">百度账号登陆</a> <span>或</span> <a class="baidureg" href="javascript:void(0);">注册</a> </div> <a class="loginbar-close" href="javascript:;">关闭</a> </div>  <script>
+    window.alogObjectConfig = {
+        product: '11',
+        page: '2', 
+        speed_page: '2',  
+ 
+        speed: {
+            sample: '0.01'   
+        },
+ 
+       
+        monkey: {
+            sample: '0.01'   
+        },
+ 
+        exception: { 
+            sample: '0.01' 
+        },
+ 
+        feature: {
+            sample: '0.01'
+        },
+ 
+        
+        cus: {
+            sample: '0.01' 
+        },
+ 
+        csp: {
+            sample: '0.01',
+            'default-src': [
+                {match: '*bae.baidu.com', target: 'Accept,Warn'},
+                {match: '*.baidu.com,*.bdstatic.com,*.bdimg.com,localhost,*.hao123.com,*.hao123img.com', target: 'Accept'},
+                {match: /^(127|172|192|10)(\.\d+){3}$/, target: 'Accept'},
+                {match: '*', target: 'Accept,Warn'}
+            ]
+        }
+    };
+ 
+    // pc和mobile端会稍有不同，必须严格按照该文档来部署，该段代码必须放在上面的window.alogObjectConfig配置之后
+    void function(a,b,c,d,e,f,g){a.alogObjectName=e,a[e]=a[e]||function(){(a[e].q=a[e].q||[]).push(arguments)},a[e].l=a[e].l||+new Date,d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d;var h=!0;if(a.alogObjectConfig&&a.alogObjectConfig.sample){var i=Math.random();a.alogObjectConfig.rand=i,i>a.alogObjectConfig.sample&&(h=!1)}h&&(f=b.createElement(c),f.async=!0,f.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),g=b.getElementsByTagName(c)[0],g.parentNode.insertBefore(f,g))}(window,document,"script","/hunter/alog/alog.min.js","alog"),void function(){function a(){}window.PDC={mark:function(a,b){alog("speed.set",a,b||+new Date),alog.fire&&alog.fire("mark")},init:function(a){alog("speed.set","options",a)},view_start:a,tti:a,page_ready:a}}();
+    void function(n){var o=!1;n.onerror=function(n,e,t,c){var i=!0;return!e&&/^script error/i.test(n)&&(o?i=!1:o=!0),i&&alog("exception.send","exception",{msg:n,js:e,ln:t,col:c}),!1},alog("exception.on","catch",function(n){alog("exception.send","exception",{msg:n.msg,js:n.path,ln:n.ln,method:n.method,flag:"catch"})})}(window);
+</script>  <script>
+    void function(e,t){for(var n=t.getElementsByTagName("img"),a=+new Date,i=[],o=function(){this.removeEventListener&&this.removeEventListener("load",o,!1),i.push({img:this,time:+new Date})},s=0;s< n.length;s++)!function(){var e=n[s];e.addEventListener?!e.complete&&e.addEventListener("load",o,!1):e.attachEvent&&e.attachEvent("onreadystatechange",function(){"complete"==e.readyState&&o.call(e,o)})}();alog("speed.set",{fsItems:i,fs:a})}(window,document);
+</script> 
+<a id="backTop" href="javascript:;" data-title="返回顶部"><div class="btn-inner-text"></div></a>
+<a href="javascript:;" id="report_link" data-title="反馈图片"><div class="btn-inner-text">反馈</div></a>
+ 
+<script>
+    (function () {
+        var pos = '';
+        if (pos == 1) {
+            pos = '-title';
+        } else if (pos == 3) {
+            pos = '-more';
+        } else {
+            pos = '';
+        }
+
+        document.addEventListener && document.addEventListener('DOMContentLoaded', function () {
+
+            var net = 0;
+            var isPreLoaded = 0;
+            var start = speed.get('start');
+
+            if(window.performance){
+                net = window.performance.timing.navigationStart;
+            }
+            net && speed.mark('net', start - net);
+            speed.mark('preloaded', isPreLoaded);
+            speed.mark('domc');
+            // 针对chrome细分数据
+            if (window.performance && window.performance.timing) {
+                var timing = window.performance.timing;
+                // tcp connct时间
+                speed.mark('dnst', timing.domainLookupEnd - timing.domainLookupStart);
+                // dns解析时间
+                speed.mark('cot', timing.connectEnd - timing.connectStart);
+                // 首字节返回时间点
+                speed.mark('rpnt', timing.responseStart);
+                if (net) {
+                    // tc跳板时间
+                    speed.mark('tct', timing.navigationStart - net);
+                    // 网络开始时间点
+                    speed.mark('nets', net);
+                }
+                speed.mark('connectStart', timing.connectStart);
+            }
+        }, false);
+
+        var addWindowEvent = window.addEventListener ?
+            function(type, fn) { window.addEventListener(type, fn, false); } :
+            function(type, fn) { window.attachEvent('on' + type, fn); };
+        addWindowEvent('load', function () {
+            var url = location.href;
+            url = url.replace(/&ctd=([^&]+)/, '');
+            if (url) {
+                window.history && window.history.replaceState && window.history.replaceState(null, "", url + '');
+            }
+
+            speed.mark('load');
+            LazySend();
+        });
+
+        function LazySend() {
+            if (speed.firstScCount >= 5) {
+                speed.mark('frm', '');
+                speed.send();
+            } else {
+                setTimeout(LazySend, 1000);
+            }
+        }
+    })();
+</script>
+<script>
+    (function () {
+        if (window._alaEnter && window._alaEnter !== true) {
+            window._alaEnter('end');
+            var oldOnerror = window.onerror;
+            window.onerror = function (msg, source, lineno, colno) {
+                try {
+                    oldOnerror && oldOnerror.apply(window, arguments);
+                    var str = 'error&source=' + source + '&msg=' + msg + '&ln=' + lineno + '&cn=' + colno;
+                    window._alaEnter(str);
+                } catch (e) {}
+            };
+        }
+    })();
+</script>
+<script>
+    </script>
+                    <script>
+    void function(a,b,c,d,e,f){function g(b){a.attachEvent?a.attachEvent("onload",b,!1):a.addEventListener&&a.addEventListener("load",b)}function h(a,c,d){d=d||15;var e=new Date;e.setTime((new Date).getTime()+1e3*d),b.cookie=a+"="+escape(c)+";path=/;expires="+e.toGMTString()}function i(a){var c=b.cookie.match(new RegExp("(^| )"+a+"=([^;]*)(;|$)"));return null!=c?unescape(c[2]):null}function j(){var a=i("PMS_JT");if(a){h("PMS_JT","",-1);try{a=a.match(/{["']s["']:(\d+),["']r["']:["']([\s\S]+)["']}/),a=a&&a[1]&&a[2]?{s:parseInt(a[1]),r:a[2]}:{}}catch(c){a={}}a.r&&b.referrer.replace(/#.*/,"")!=a.r||alog("speed.set","wt",a.s)}}if(a.alogObjectConfig){var k=a.alogObjectConfig.sample,l=a.alogObjectConfig.rand;d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d,k&&l&&l>k||(g(function(){alog("speed.set","lt",+new Date),e=b.createElement(c),e.async=!0,e.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),f=b.getElementsByTagName(c)[0],f.parentNode.insertBefore(e,f)}),j())}}(window,document,"script","/hunter/alog/dp.min.js");
+</script>   </body><script type="text/javascript"  src="//img0.bdstatic.com/static/common/widget/ui/base/base_a66ce51.js" ></script>
+<script type="text/javascript"  src="//img0.bdstatic.com/static/common/pkg/cores_2210f76.js" ></script>
+<script type="text/javascript"  src="//img1.bdstatic.com/static/common/widget/ui/juicer/juicer_59c3d50.js" ></script>
+<script type="text/javascript"  src="//img1.bdstatic.com/static/searchresult/pkg/result_8c45703.js" ></script>
+<script type="text/javascript">!function(){    window._alaEnter && window._alaEnter !== true && window._alaEnter('sample');
+    var sample = {"UI_YUNYING_11":"0","UI_YUNYING_13":"1","UI_YUNYING_21":"0","UI_YUNYING_31":"2","UI_PC_LOW_QUALITY_FILT":"0","UI_MERGE_ALL_RESULTS":"2","UI_WISE_PEITU_ADS":"0","UI_WISE_IMAGEQ_GS":"1","UI_PC_RIGHT_AD":"1","UI_WISE_HOMEPAGE_FEED":"1","UI_PC_TJAD":"2","UI_PC_JIAZHUANG_FORWARD":"0","UI_WISE_SET_TAG":"2","FEED_SAMPLE":"0","UI_WISE_DETAIL_SET_SLIDER_CHANGE":"0","UI_WISE_CYCS":"0","UI_WISE_ANIMATE":"2","UI_WISE_RESULT_IMG_SET":"1"};
+    var keyValue = '';
+    for(var name in sample) {
+        keyValue +=  name + ':' + sample[name] + ',';
+    }
+    window.samplekey = keyValue.substr(0, keyValue.length - 1);
+}();
+!function(){// ala进入问题调查
+window._alaEnter && window._alaEnter !== true && window._alaEnter('prerequire');
+require.async(['searchresult:widget/ui/app/app'], function (app) {
+    window._alaEnter && window._alaEnter !== true && window._alaEnter('postrequire');
+    require.async(['searchresult:widget/ui/action/base/base']);
+    app.setPageInfo({
+        // 在后端对query进行抽样的时候，用这个来统计实验组和对照组
+        queryPageType : '0',
+        tag_type: '',
+        tag: '',
+        subtag: '',
+        gsm: '1e',
+        listNum : '1981',
+        dispNum : '1398791',
+        bdIsClustered : '1',
+        fr : '',
+        sme : '',
+        ie : 'utf-8',
+        oe : 'utf-8',
+        fInsertNum : "0",
+        queryWordEnc: '%E7%8B%97',
+        queryWordGBKEnc: '%B9%B7',
+        queryWord : '狗',
+        queryUrlWord : '%E7%8B%97',
+        bdFmtDispNum : '1398791',
+        bdSearchTime : '',
+        gbkword:'%B9%B7',
+        resTabs : [],
+        userid:'',
+        useSign:'',
+        userNumID:'', // 这个才是真正的 userid
+        encodeUserNumId:'',
+        spaceUrl:'',
+        hasUserName: ('' == '0'),
+        bdstoken : '',
+        thirdLogo :'0', // 第三方网站登录的logo，为空则不显示
+        se:'',
+        needIE:'1',
+        jit:'',
+        showHot:'',
+        hasResult: '1',
+        aspSID:'c0c68170ad8a93e6',
+        oriquery: '',
+        fm: 'result',
+        hs: '0',
+        adBigPicPos: -1,
+                checkHttps: 0,
+                strategyType: 'normal',
+                                        personalized:'0'
+    });
+    app.setData('jsConfs', {    "normal": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,"lineHeight": 200,        "maxBaseLineHeight": 220,        "minBaseLineHeight": 200,"pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,"maxImgWidth": 400,"pageMoreNum": 10,"leftMenu": 0    },    "comic": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 190,        "maxBaseLineHeight": 210,        "minBaseLineHeight": 190,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 0    },    "ald": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 190,        "maxBaseLineHeight": 210,        "minBaseLineHeight": 190,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 0    },    "star": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 260,        "maxBaseLineHeight": 280,        "minBaseLineHeight": 250,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu":0    },    "avatar_brand": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 300,        "maxBaseLineHeight": 320,        "minBaseLineHeight": 280,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 500,        "pageMoreNum": 10,"leftMenu": 0    },    "avatar_star": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 260,        "maxBaseLineHeight": 280,        "minBaseLineHeight": 250,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,"leftMenu": 0    },    "avatar_head": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 200,        "maxBaseLineHeight": 210,        "minBaseLineHeight": 190,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 190    },    "avatar_wallpaper": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 180,        "maxBaseLineHeight": 200,        "minBaseLineHeight": 160,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 190    },    "single": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 200,        "maxBaseLineHeight": 220,        "minBaseLineHeight": 200,        "pageLineNum": 1,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 0    },    "personalized": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 200,        "maxBaseLineHeight": 220,        "minBaseLineHeight": 200,        "pageLineNum": 2,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 0    }}
+);
+    app.setData('imgData', {    "queryEnc":"%E7%8B%97",    "displayNum":1398791,    "bdIsClustered" : "1",    "listNum":1981,    "bdFmtDispNum" : "1398791",    "bdSearchTime" : "",    "isNeedAsyncRequest":0,"data":[{"thumbURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=53829328,2284137070&fm=11&gp=0.jpg","adType":"0","middleURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=53829328,2284137070&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":0,            "objURL":"http://www.jitu5.com/uploads/allimg/150728/258496-150HQ0435039.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B3tp7c_z&e3Bv54AzdH3Fp7h7AzdH3Fda8ca0AzdH3F9lacdb_z&e3Bip4s",            "fromURLHost":"www.jitu5.com","currentIndex":"",            "width":947,            "height":1000,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"21942357300",            "is":"925404553,2999324362",            "partnerId":0,            "bdSetImgNum":9,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"<strong>狗<\/strong>摄影",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "53829328,2284137070",            "os" : "807089566,3438355626",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3726003260,999016331&fm=11&gp=0.jpg","adType":"0","middleURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3726003260,999016331&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":1,            "objURL":"http://dl.bizhi.sogou.com/images/2012/04/02/71510.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3F1s_z&e3Bktzit_z&e3Bf5257_z&e3Bv54AzdH3Ft4w2jfAzdH3Fda8dAzdH3Fa9AzdH3FadAzdH3F08c8a_z&e3B3r2",            "fromURLHost":"dl.bizhi.sogou.com","currentIndex":"",            "width":1920,            "height":1080,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"44058298620",            "is":"683193348,552055896",            "partnerId":0,            "bdSetImgNum":16,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"哺乳动物 <strong>狗<\/strong> 壁纸_哺乳动物 狗 壁纸",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3726003260,999016331",            "os" : "866936073,3627215790",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2911534095,2327181832&fm=11&gp=0.jpg","adType":"0","middleURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2911534095,2327181832&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":2,            "objURL":"http://image9.360doc.com/DownloadImg/2010/05/0122/3067183_78.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B3tp7c_z&e3Bv54AzdH3Fp7h7AzdH3Fda8ca0AzdH3F9lacdb_z&e3Bip4s",            "fromURLHost":"www.jitu5.com","currentIndex":"",            "width":1024,            "height":768,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"17",            "di":"25062618620",            "is":"19492242,722941387",            "partnerId":0,            "bdSetImgNum":11,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"摄影<strong>狗<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2911534095,2327181832",            "os" : "275664349,4171959899",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1138440166,456755656&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1138440166,456755656&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":3,            "objURL":"http://imgsrc.baidu.com/imgad/pic/item/1e30e924b899a90139fcf01017950a7b0308f5cf.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bq7wg3tg2_z&e3Bv54AzdH3Ft42k7yAzdH3F7sacmb-a0la_z&e3Bip4s",            "fromURLHost":"www.quanjing.com","fromURLHostWord":"全景网","currentIndex":"",            "width":1000,            "height":666,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"48851588520",            "is":"0,0",            "partnerId":2,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"头像,<strong>狗<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1138440166,456755656",            "os" : "1367122205,2737336401",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2792067022,1895014651&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img4.imgtn.bdimg.com\/it\/u=2792067022,1895014651&fm=214&gp=0.jpg","FromURL":"http:\/\/www.tooopen.com\/view\/589093.html"},{"ObjURL":"http:\/\/pic.5tu.cn\/uploads\/allimg\/201404\/010p000040295c3639-1.jpg","FromURL":"http:\/\/pic.5tu.cn\/photo\/dw\/dw_jq.htm"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2792067022,1895014651&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2792067022,1895014651&fm=27&gp=0.jpg",            "pageNum":4,            "objURL":"http://img.taopic.com/uploads/allimg/130321/240397-1303210H94336.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bpw5rtv_z&e3Bv54AzdH3Fp7h7AzdH3Fda8nanAzdH3Fnnl8b8_z&e3Bip4s",            "fromURLHost":"www.taopic.com","currentIndex":"",            "width":666,            "height":1000,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"11465630",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"草地上的小<strong>狗<\/strong>摄影图片[高清图片,jpg格式]",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2792067022,1895014651",            "os" : "2264235504,4229967781",            "simid" : "3442711820,266175346",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3784500350,2646559554&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3784500350,2646559554&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":5,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=0084c40fc2fcc3cea0cdc170fa2cbcfd/c2fdfc039245d68893abfa89aec27d1ed21b2475.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fb89al0lbc",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":738,            "height":1200,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"63316468070",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"chiweenie<strong>狗<\/strong>摇着尾巴",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3784500350,2646559554",            "os" : "2396123559,4207755470",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2171117185,238826669&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2171117185,238826669&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":6,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=090ce02d91504fc2b652b8468db48d64/d4628535e5dde711b6cd2fd3adefce1b9d1661f3.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fb8n8c0md9",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":1200,            "height":975,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"39065749710",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"意大利乒乓球<strong>狗<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2171117185,238826669",            "os" : "1453855069,1217856455",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3206723577,1505557967&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3206723577,1505557967&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":7,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=e6ec4f0d79f08202399f997c23929198/5bafa40f4bfbfbede0c39d5172f0f736afc31f01.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fbad008cmd",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":800,            "height":1200,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"51451318950",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"布朗<strong>狗<\/strong>坐双腿分开歪头",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3206723577,1505557967",            "os" : "5290558,873913649",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3316456693,3539233857&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img0.imgtn.bdimg.com\/it\/u=3316456693,3539233857&fm=214&gp=0.jpg","FromURL":"http:\/\/www.goumin.com\/album\/1403596\/6086938.html"},{"ObjURL":"http:\/\/www.goumin.com\/attachments\/photo\/0\/0\/92\/23773\/6086096.jpg","FromURL":"http:\/\/www.goumin.com\/album\/1401313\/6086096.html"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3316456693,3539233857&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3316456693,3539233857&fm=27&gp=0.jpg",            "pageNum":8,            "objURL":"http://img.tuku.cn/file_thumb/201403/m2014032222281972.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bp7h7_z&e3BvgAzdH3FktzitAzdH3Frtv8m0_z&e3Bwfrx",            "fromURLHost":"www.tuku.cn","currentIndex":"",            "width":1024,            "height":640,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"14368744500",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"宠物<strong>狗<\/strong>桌面壁纸图片 - 第47张 1440x900",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3316456693,3539233857",            "os" : "2007211825,233608971",            "simid" : "3257520693,259173731",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2348686897,1084874607&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2348686897,1084874607&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":9,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=7499e348b919ebc4d4757edaea4fa589/b64543a98226cffc13bf639fb3014a90f603ea02.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fb88dnambb",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":1200,            "height":798,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"23715195370",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"一对新几内亚岛唱<strong>狗<\/strong>,狼hallstromi,在米勒公园动物园.",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2348686897,1084874607",            "os" : "1966995733,2832174532",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2105735443,449615746&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2105735443,449615746&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":10,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=229d0ae35866d0166a14966bff42be72/0824ab18972bd4072ebc5ad371899e510fb309a0.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fb8n8llmn0",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":805,            "height":1200,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"34990348380",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"拍摄<strong>狗<\/strong>食的工作室镜头",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2105735443,449615746",            "os" : "746888709,1459246454",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2970982069,678047886&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2970982069,678047886&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":11,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=b18a0e51e1f81a4c323fe48abf430a2c/500fd9f9d72a605998945d3f2234349b033bba0b.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fb8ndm090c",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":1200,            "height":800,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"44955459800",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"拉布拉多,雪,手杖,<strong>狗<\/strong>,意大利,图像",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2970982069,678047886",            "os" : "1439153577,2976060928",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3393390761,1005233492&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3393390761,1005233492&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":12,            "objURL":"http://imgsrc.baidu.com/imgad/pic/item/cdbf6c81800a19d83c49932339fa828ba61e4649.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bq7wg3tg2_z&e3Bv54AzdH3Ft42k7yAzdH3F7sacdd-0nb0_z&e3Bip4s",            "fromURLHost":"www.quanjing.com","fromURLHostWord":"全景网","currentIndex":"",            "width":1000,            "height":666,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"14763950870",            "is":"0,0",            "partnerId":2,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"<strong>狗<\/strong>,哈士奇犬,动物,大,可爱,驯服,家养,毛皮,多毛,家,房子,宠物,卧",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3393390761,1005233492",            "os" : "962101460,2430206353",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1060163015,2357340218&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img1.imgtn.bdimg.com\/it\/u=1060163015,2357340218&fm=214&gp=0.jpg","FromURL":"http:\/\/niutuku.com\/bizhi\/12724\/200569.shtml"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1060163015,2357340218&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1060163015,2357340218&fm=27&gp=0.jpg",            "pageNum":13,            "objURL":"http://img2.niutuku.com/desk/1207/1113/bizhi-1113-34173.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fgt7p7h7_z&e3Bv54AzdH3FktzitAzdH3F8d0d9AzdH3Fdaacml_z&e3Bfip4s",            "fromURLHost":"niutuku.com","currentIndex":"",            "width":1024,            "height":768,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"7178885230",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"小<strong>狗狗<\/strong>的郊游-可爱小狗狗壁纸:可爱小狗狗壁纸-公园里",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1060163015,2357340218",            "os" : "3016206781,2210534144",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3975975534,1358697388&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3975975534,1358697388&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":14,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=4eb6190b9913b07ea9b0584b64befb56/cb8065380cd7912322990a5ea7345982b2b7809b.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fb8mld98dm",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":1200,            "height":800,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"51693789310",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"哈巴<strong>狗<\/strong>和缅甸猫",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3975975534,1358697388",            "os" : "3832566452,1129819870",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1070156135,151154449&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img2.imgtn.bdimg.com\/it\/u=1070156135,151154449&fm=214&gp=0.jpg","FromURL":"http:\/\/www.hellorf.com\/photo\/show\/153695291?from=search"},{"ObjURL":"http:\/\/ukrubens.com\/uploadfile\/2014\/0323\/20140323093455866.jpg","FromURL":"http:\/\/ukrubens.com\/2014\/information_0323\/62.html"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1070156135,151154449&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1070156135,151154449&fm=27&gp=0.jpg",            "pageNum":15,            "objURL":"http://pic38.nipic.com/20140306/2531170_100333288000_2.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bgtrtv_z&e3Bv54AzdH3Fzi7wgptAzdH3F00lm09_8_z&e3Bip4s",            "fromURLHost":"www.nipic.com","currentIndex":"",            "width":1024,            "height":845,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"360037590",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"小<strong>狗<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1070156135,151154449",            "os" : "8191687,106059008",            "simid" : "3476909113,417683265",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3463513795,3294647898&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img1.imgtn.bdimg.com\/it\/u=3463513795,3294647898&fm=214&gp=0.jpg","FromURL":"http:\/\/www.mypsd.com.cn\/detail\/?2438757"},{"ObjURL":"http:\/\/t1.niutuku.com\/960\/45\/45-360835.jpg","FromURL":"http:\/\/niutuku.com\/bizhi\/9122\/361394.shtml"}],"adType":"0","middleURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3463513795,3294647898&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3463513795,3294647898&fm=27&gp=0.jpg",            "pageNum":16,            "objURL":"http://pic23.nipic.com/20120830/668573_162740661197_2.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bgtrtv_z&e3Bv54AzdH3Ffi5oAzdH3F8AzdH3Fm9AzdH3Fm090l8mhmkca19wu_z&e3Bip4s",            "fromURLHost":"www.nipic.com","currentIndex":"",            "width":1024,            "height":640,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"11091711730",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"哈巴<strong>狗<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3463513795,3294647898",            "os" : "3477151481,3484918234",            "simid" : "3168027573,3848099545",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2606033853,3185340159&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2606033853,3185340159&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":17,            "objURL":"http://imgsrc.baidu.com/imgad/pic/item/960a304e251f95cac1ae3990c3177f3e670952b8.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bq7wg3tg2_z&e3Bv54AzdH3Ft42k7yAzdH3F7sacm0-bmda_z&e3Bip4s",            "fromURLHost":"www.quanjing.com","fromURLHostWord":"全景网","currentIndex":"",            "width":1000,            "height":872,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"10605914020",            "is":"0,0",            "partnerId":2,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"<strong>狗<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2606033853,3185340159",            "os" : "767703273,2499841529",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1984300998,3929667914&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img3.imgtn.bdimg.com\/it\/u=1984300998,3929667914&fm=214&gp=0.jpg","FromURL":"http:\/\/sc.chinaz.com\/tupian\/164616736.htm"},{"ObjURL":"http:\/\/pic2.sc.chinaz.com\/files\/pic\/pic\/b\/maogou_356b.jpg","FromURL":"http:\/\/sc.chinaz.com\/tupian\/164616736.htm"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1984300998,3929667914&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1984300998,3929667914&fm=27&gp=0.jpg",            "pageNum":18,            "objURL":"http://bizhi.zhuoku.com/2009/08/29/dogs/dogs12.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bzi75h7_z&e3Bv54AzdH3Fzi754twgktzitAzdH3F15g2-15g2o7AzdH3Fdaalabdl8n9nac%db8d%dl_z&e3Bip4",            "fromURLHost":"www.zhuoku.com","currentIndex":"",            "width":1280,            "height":900,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"11516962710",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"可爱小<strong>狗<\/strong>,小犬宽屏壁纸 1280x900(壁纸12)",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1984300998,3929667914",            "os" : "3401263553,3661130482",            "simid" : "3464421280,292046187",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=347959505,2123358522&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img0.imgtn.bdimg.com\/it\/u=347959505,2123358522&fm=214&gp=0.jpg","FromURL":"http:\/\/www.dabaoku.com\/baike\/aihao\/chongwu\/2014042926385.shtml"},{"ObjURL":"http:\/\/e.hiphotos.baidu.com\/exp\/whcrop=92,69\/sign=1a54a0380a7b02080c9c69a30da9cfea\/908fa0ec08fa513d52c5e4433d6d55fbb3fbd9c4.jpg","FromURL":"http:\/\/jingyan.baidu.com\/article\/b907e627f5baf746e7891c12.html"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=347959505,2123358522&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=347959505,2123358522&fm=27&gp=0.jpg",            "pageNum":19,            "objURL":"http://bizhi.zhuoku.com/2009/08/29/dogs/dogs33.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bzi75h7_z&e3Bv54AzdH3Fzi754twgktzitAzdH3F15g2-15g2o7AzdH3Fdaalabdl8n9nac%dbnn%dl_z&e3Bip4",            "fromURLHost":"www.zhuoku.com","currentIndex":"",            "width":1280,            "height":900,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"12314308820",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"可爱小<strong>狗<\/strong>,小犬宽屏壁纸 1280x900(壁纸33)",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "347959505,2123358522",            "os" : "3445849125,3682969335",            "simid" : "3453010816,248211436",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1369521683,4182494965&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1369521683,4182494965&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":20,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=21810a29efdde711f3df4bb5cf86a46e/91ef76c6a7efce1b69f572e6a551f3deb58f65c4.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fba9dbbl0m",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":1200,            "height":800,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"18380197900",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"影棚拍摄,注视镜头,动物,躺,<strong>狗<\/strong>,拉布拉多犬,彩色图片,无人,小狗,图像",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1369521683,4182494965",            "os" : "2698708756,1752193413",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3812129036,979879937&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img4.imgtn.bdimg.com\/it\/u=3812129036,979879937&fm=214&gp=0.jpg","FromURL":"http:\/\/news.163.com\/10\/0914\/02\/6ggotm3m00014aed.html"},{"ObjURL":"http:\/\/pics.photophoto.cn\/064\/018\/057\/0180570470.jpg","FromURL":"http:\/\/www.photophoto.cn\/photo\/dongwu\/baobeigougou"}],"adType":"0","middleURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3812129036,979879937&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3812129036,979879937&fm=27&gp=0.jpg",            "pageNum":21,            "objURL":"http://bpic.ooopic.com/15/99/79/15997991-90c930b69531e78a8248a786b81ae5fd.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B555rtv_z&e3Bv54AzdH3Ffij3ty7wgf7AzdH3F8cll0ll8_z&e3Bip4s",            "fromURLHost":"www.ooopic.com","currentIndex":"",            "width":1024,            "height":727,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"23174122180",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"可爱小狗犬类动物<strong>狗狗<\/strong>写真图片素材",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3812129036,979879937",            "os" : "2456892109,2551385457",            "simid" : "4052878583,676104769",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3384287608,1974061972&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img0.imgtn.bdimg.com\/it\/u=3384287608,1974061972&fm=214&gp=0.jpg","FromURL":"http:\/\/jingyan.baidu.com\/article\/3ea51489aeaaf652e61bbac8.html"},{"ObjURL":"http:\/\/b.hiphotos.baidu.com\/exp\/w=500\/sign=11ea2587b53eb13544c7b7bb961fa8cb\/d31b0ef41bd5ad6e4c246d8588cb39dbb7fd3cfb.jpg","FromURL":"http:\/\/jingyan.baidu.com\/article\/f0e83a25935cfb22e591018e.html"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3384287608,1974061972&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3384287608,1974061972&fm=27&gp=0.jpg",            "pageNum":22,            "objURL":"http://img2.niutuku.com/desk/1207/1139/bizhi-1139-21120.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fgt7p7h7_z&e3Bv54AzdH3FktzitAzdH3F8d800AzdH3F8lc00m_z&e3Bfip4s",            "fromURLHost":"niutuku.com","currentIndex":"",            "width":1024,            "height":768,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"7868325630",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"微笑的<strong>狗狗<\/strong>桌面壁纸webshotsdailyphotos2008年3月版高清壁纸(下辑)58",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3384287608,1974061972",            "os" : "3143952850,2296832600",            "simid" : "3301184904,3120070275",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=231294367,3442334963&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img2.imgtn.bdimg.com\/it\/u=231294367,3442334963&fm=214&gp=0.jpg","FromURL":"http:\/\/www.qzone.cc\/haokan\/keai\/119136.html"},{"ObjURL":"http:\/\/picm.photophoto.cn\/006\/018\/028\/0180280077.jpg","FromURL":"http:\/\/www.photophoto.cn\/photo\/dongwu\/keaigougou\/image_212b4f89625577dd.htm"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=231294367,3442334963&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=231294367,3442334963&fm=27&gp=0.jpg",            "pageNum":23,            "objURL":"http://t1.niutuku.com/960/30/30-264087.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fgt7p7h7_z&e3Bv54AzdH3FktzitAzdH3F8n9dnAzdH3Fdm9cmd_z&e3Bfip4s",            "fromURLHost":"niutuku.com","currentIndex":"",            "width":960,            "height":720,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"25569759600",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"1600小<strong>狗<\/strong>写真-14-18桌面壁纸图片下载",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "231294367,3442334963",            "os" : "4267207912,3440166174",            "simid" : "4283773231,911557321",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3352426586,2545954851&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3352426586,2545954851&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":24,            "objURL":"http://imgsrc.baidu.com/imgad/pic/item/d043ad4bd11373f027c56581ae0f4bfbfbed0431.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bq7wg3tg2_z&e3Bv54AzdH3Ft42k7yAzdH3Fr4a8bb-b9d8u4_z&e3Bip4s",            "fromURLHost":"www.quanjing.com","fromURLHostWord":"全景网","currentIndex":"",            "width":1024,            "height":682,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"25058090550",            "is":"0,0",            "partnerId":2,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"英国斗牛犬,小<strong>狗<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3352426586,2545954851",            "os" : "555686789,3973089921",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2059789904,1209520559&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2059789904,1209520559&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":25,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=50fcca52db1373f0e13267dccc66218e/83025aafa40f4bfb7a52cc7d094f78f0f736181c.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fbadlddlnn",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":1200,            "height":800,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"16489246310",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"两只<strong>狗<\/strong>玩",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2059789904,1209520559",            "os" : "2276856632,3926502961",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3621251952,2191697991&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img4.imgtn.bdimg.com\/it\/u=3621251952,2191697991&fm=214&gp=0.jpg","FromURL":"http:\/\/www.tuku.cn\/pic345_064.aspx"},{"ObjURL":"http:\/\/image.photophoto.cn\/nm-10\/018\/049\/0180490070.jpg","FromURL":"http:\/\/www.photophoto.cn\/photo\/show\/018\/049\/0180490070.htm"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3621251952,2191697991&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3621251952,2191697991&fm=27&gp=0.jpg",            "pageNum":26,            "objURL":"http://bizhi.zhuoku.com/wall/jie/20061127/dog23/dog036.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bzi75h7_z&e3Bv54AzdH3Fzi754twgktzitAzdH3F15g2-15g2o7AzdH3Fdaam88dbdn8l8b%dbnc%dl_z&e3Bip4",            "fromURLHost":"www.zhuoku.com","currentIndex":"",            "width":1600,            "height":1200,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"29157217210",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"小<strong>狗<\/strong>写真壁纸(壁纸35)",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3621251952,2191697991",            "os" : "617099529,588858713",            "simid" : "3382135226,393750593",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=213994559,1347381548&fm=27&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img2.imgtn.bdimg.com\/it\/u=213994559,1347381548&fm=214&gp=0.jpg","FromURL":"http:\/\/www.pasteurfood.com\/68\u8bbe\u8ba1\u5e08\u8054\u76df\/2.html"},{"ObjURL":"http:\/\/sc.68design.net\/qita7\/dog\/images\/1920dog_010013.jpg","FromURL":"http:\/\/sc.68design.net\/qita7\/dog\/1.htm"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=213994559,1347381548&fm=27&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=213994559,1347381548&fm=27&gp=0.jpg",            "pageNum":27,            "objURL":"http://d.hiphotos.baidu.com/baike/pic/item/503d269759ee3d6d4e1aab3a43166d224e4ade66.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fkwthj_z&e3Bkwt17_z&e3Bv54AzdH3FetjoAzdH3F8nl8cnd_z&e3Bip4?u7gv=6jptpsj",            "fromURLHost":"baike.baidu.com","currentIndex":"",            "width":1271,            "height":759,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"9063900010",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"壁纸 动物 狗 <strong>狗狗<\/strong> 1271_759",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "213994559,1347381548",            "os" : "1424365662,2833572558",            "simid" : "4227584090,430007453",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=326989185,200907447&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=326989185,200907447&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":28,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=12a60b7e0633874488c8273f3966b38c/eaf81a4c510fd9f933a800472f2dd42a2834a465.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fb8ndl8cb9",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":1200,            "height":800,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"36986992480",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"<strong>狗<\/strong>,魁北克,图像",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "326989185,200907447",            "os" : "698767435,3401864533",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1705102913,4054094253&fm=200&gp=0.jpg","adType":"0","middleURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1705102913,4054094253&fm=200&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":29,            "objURL":"http://imgsrc.baidu.com/image/c0%3Dshijue1%2C0%2C0%2C294%2C40/sign=b546630a8d01a18be4e61a0cf6466d7d/86d6277f9e2f070816aacf26e324b899a901f26d.jpg",            "fromURL":"ipprf_z2C$qAzdH3FAzdH3Fooo_z&e3Bev2_z&e3Bv54AzdH3Fv6jwptejAzdH3Fb89cc8lla",            "fromURLHost":"www.vcg.com","fromURLHostWord":"视觉中国","currentIndex":"",            "width":792,            "height":1200,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"13",            "di":"36076580780",            "is":"0,0",            "partnerId":1,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"冬天,<strong>狗<\/strong>,动物,可爱的,雪,舌头,犬科的,英格兰,西伯利亚哈士奇犬",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1705102913,4054094253",            "os" : "1455690083,2603002605",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{}]}
+);
+    app.setData('fcadData', {"fcData":[{"type":"FCAD","cellClass":"fc-default","timeSign":"52","posType":70010,"pageNum":0,"thumbURL":"https:\/\/f11.baidu.com\/it\/u=1730324120,289841400&fm=72","middleURL":"https:\/\/f11.baidu.com\/it\/u=1730324120,289841400&fm=72","largeTnImageUrl":"https:\/\/f11.baidu.com\/it\/u=1730324120,289841400&fm=72","hoverURL":"https:\/\/f11.baidu.com\/it\/u=1730324120,289841400&fm=72","matchURL":"https:\/\/f11.baidu.com\/it\/u=1730324120,289841400&fm=72","picId":"0","fromURLHost":"www.jd.com","bdImgnewsDate":"1000","fromURL":"http:\/\/www.baidu.com\/baidu.php?url=0s0000KDPxom9hToFBxVtbcGxKNGnDmsr1SKtqDnEx7BP29YdG9MjXL8FoxRdbZMoZ0S4UnFkxNADSQROjBfE4YU8CQH22idInp23Yiq27Wp1_J9UkRa9sKRlXr3ncJPY2t8Y2cZLZGbjptAKjLJyvw52uWRrN7ZfYmo6iUcNkqwNxD6Of.DR_NR2Ar5Od66sw5I7M9CE9exQQTBaPrMLek8sHfGmEukmntpyuCp88aFeCEETkblTMWYS5ZIblkECFSq17erQKA-hpAo-3e2lthekzNqhOofTkNfCmt5Zv3TMds45onMzzLcs45oA-hpAojkSEpMwsrh8stx-9tqhZden5o8sSXejex5jlSXZ1tTr1dseOZjblXdrW6IPIBstx-kvNd4PLWboePSZFY1F4UCTXZWt_-hHHuSxQqOEJstx-93OQjblpD1rEySZ-WI6h9H93O28z1_s4rh6hr993O2EjblRkf3X5zsRPXkiOi1JHukyAp7WF8en-p60.U1Yk0ZDq8UT0Ijv4teZv8UT0pyYqn1mL0ATqXZ6k0ZNG5fKspyfqP0KWpyfqrjf0UgfqnW03rfKopHYs0ZFY5Hbdn6K-pyfqnHD3nH7xnHD4PW00mhbqn0KVm1Ys0Z7spyfqn0Kkmv-b5H00ThIYmyTqn0KEIhsqnHDsn16VuZGxnHcsnWcVuZGxnHc3P1nVuZC0Uy-b5H00pg7Y5H00mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5H00uMfqn0KspjYs0Aq15H00mMTqn0K8IjYs0ZPl5fKzug7Y5HDdnjmsnjc4nWcLnjm0Tv-b5ynsm1m3nHTsmyf3mHb1uHm0mynqnfKlIjYs0AdWgvuzUvYqn0KWThnqn1cLPWT","width":1024,"iwidth":1024,"height":687,"iheight":687,"fromPageTitle":"\u8d35\u5bbe\u72d7-\u300c\u4eac\u4e1c\u300d\u4e13\u4e1a\u5475\u62a4,\u52a9\u529b\u7231\u5ba0\u6210\u957f!","fromPageAbs":"\u8d35\u5bbe\u72d7-\u4e0a\u4eac\u4e1c,\"\u8c6a\"\u793c\u5927\u6d3e\u9001!\u7cbe\u5f69\u76f4\u964d,\u98df\u4e0d\u53ef\u6321,\u6ee1\u51cf+\u6298\u6263,..","base64":"","adNativeUrl":"","adTag":"","adFlag":0,"adShortSummary":"","adStylesReserve":"","adSellPointTag":""},{"type":"FCAD","cellClass":"fc-default","timeSign":"52","posType":70010,"pageNum":1,"thumbURL":"https:\/\/f11.baidu.com\/it\/u=3170508979,1094998817&fm=72","middleURL":"https:\/\/f11.baidu.com\/it\/u=3170508979,1094998817&fm=72","largeTnImageUrl":"https:\/\/f11.baidu.com\/it\/u=3170508979,1094998817&fm=72","hoverURL":"https:\/\/f11.baidu.com\/it\/u=3170508979,1094998817&fm=72","matchURL":"https:\/\/f11.baidu.com\/it\/u=3170508979,1094998817&fm=72","picId":"0","fromURLHost":"www.gdwensha.com","bdImgnewsDate":"1000","fromURL":"http:\/\/www.baidu.com\/baidu.php?url=0s0000KDPxom9hToF60EGqxByAdZNz7ZWdxpQjhk2F8QMeilBXOUSyTT4Q-IGhF1meelHjV5aeNnmgZPXln-XoEWRw0-BxwPIPRP3vJUwc7ldNrHn-wfkqKmIpnqXeLsBGoGIX4DobLCg7X50oMkPY3jIP1KRDqmSspSNAzshOuzFiyols.DY_jNIsFBWJufGxGudF_3ojPakgEtILmC0.U1Yz0ZDq8UT0Ijv4teZv8UT0pyYqn1mL0ATqXZ6k0ZNG5fKspyfqP0KWpyfqrjf0UgfqnW03rfKopHYs0ZFY5Hbdn6K-pyfqnHD3nH7xnHD4PW00mhbqn0KVm1Ys0Z7spyfqn0Kkmv-b5H00ThIYmyTqn0KEIhsqnHDsn16VuZGxnHcsnWcVuZGxnHc3P1nVuZC0Uy-b5H00pg7Y5H00mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5H00uMfqn0KspjYs0Aq15H00mMTqn0K8IjYs0ZPl5fKzug7Y5HDdnjmsnjc4nWcLnjm0Tv-b5ynsm1m3nHTsmyf3mHb1uHm0mynqnfKlIjYs0AdWgvuzUvYqn0KWThnqPjmznW6","width":1024,"iwidth":1024,"height":640,"iheight":640,"fromPageTitle":"\u8d35\u5bbe\u72d7?\u8d35\u5bbe\u72d7\u6e29\u838e\u8d35\u5bbe\u72d7\u6743\u5a01\u8ba4\u8bc1\u7eaf\u79cd..","fromPageAbs":"\u6b63\u89c4\u72d7\u573a\u51fa\u552e\u7eaf\u79cd\u8d35\u5bbe\u72d7,\u6e29\u838e\u56fd\u9645\u540d\u72ac\u4e2d\u5fc3\u4e9a\u6d32\u9ad8\u7aef\u70ed\u7ebf\u7535\u8bdd:..","base64":"","adNativeUrl":"","adTag":"","adFlag":0,"adShortSummary":"","adStylesReserve":"","adSellPointTag":""}],"fcMidData":[],"fcBtData":[],"fcType":"2","adType":1,"fcAdDatasLen":"2"}
+);
+    app.setData('xgMidData', {"xgMidData":[],"xgMidDataLen":"0"});
+    app.setData('rpData', {"data": []});
+    app.setData('shootBannerData', window.shootBannerData);
+    app.setData('browserRsData', {    "Status" : "0",    "query" : "",    "desc" : "",    "id" : "",    "photos" :[]}
+);
+    app.setData('rsQuery', [["微笑的狗恐怖原图", "%CE%A2%D0%A6%B5%C4%B9%B7%BF%D6%B2%C0%D4%AD%CD%BC", "0", "0"],["世界上最恐怖的狗", "%CA%C0%BD%E7%C9%CF%D7%EE%BF%D6%B2%C0%B5%C4%B9%B7", "0", "0"],["世界上最漂亮的狗", "%CA%C0%BD%E7%C9%CF%D7%EE%C6%AF%C1%C1%B5%C4%B9%B7", "0", "0"],["卡通狗", "%BF%A8%CD%A8%B9%B7", "0", "0"],["哈巴狗", "%B9%FE%B0%CD%B9%B7", "0", "0"],["世界上最萌的小宠物", "%CA%C0%BD%E7%C9%CF%D7%EE%C3%C8%B5%C4%D0%A1%B3%E8%CE%EF", "0", "0"],["狗蛋", "%B9%B7%B5%B0", "0", "0"],["秋田犬", "%C7%EF%CC%EF%C8%AE", "0", "0"],["柯基", "%BF%C2%BB%F9", "0", "0"],["狼", "%C0%C7", "0", "0"],["累成狗表情包", "%C0%DB%B3%C9%B9%B7%B1%ED%C7%E9%B0%FC", "0", "0"],["蜱虫狗", "%F2%E7%B3%E6%B9%B7", "0", "0"],["拉布拉多", "%C0%AD%B2%BC%C0%AD%B6%E0", "0", "0"],["狗带", "%B9%B7%B4%F8", "0", "0"],["狗身上有蜱虫怎么办", "%B9%B7%C9%ED%C9%CF%D3%D0%F2%E7%B3%E6%D4%F5%C3%B4%B0%EC", "0", "0"],["哈士奇", "%B9%FE%CA%BF%C6%E6", "0", "0"],["金毛狗", "%BD%F0%C3%AB%B9%B7", "0", "0"],["狗笼", "%B9%B7%C1%FD", "0", "0"],["中华田园犬", "%D6%D0%BB%AA%CC%EF%D4%B0%C8%AE", "0", "0"],["世界上最可爱的狗", "%CA%C0%BD%E7%C9%CF%D7%EE%BF%C9%B0%AE%B5%C4%B9%B7", "0", "0"],["狗表情", "%B9%B7%B1%ED%C7%E9", "0", "0"],["最帅的狗", "%D7%EE%CB%A7%B5%C4%B9%B7", "0", "0"],["狗头像", "%B9%B7%CD%B7%CF%F1", "0", "0"],["单身狗", "%B5%A5%C9%ED%B9%B7", "0", "0"],["世界最高大的狗", "%CA%C0%BD%E7%D7%EE%B8%DF%B4%F3%B5%C4%B9%B7", "0", "0"],["鱼", "%D3%E3", "0", "0"],["狗脚印", "%B9%B7%BD%C5%D3%A1", "0", "0"],["大象", "%B4%F3%CF%F3", "0", "0"],["萨摩耶", "%C8%F8%C4%A6%D2%AE", "0", "0"],["傻狗", "%C9%B5%B9%B7", "0", "0"]]);
+    app.setData('hotWords', [{            "query": "重庆4.8级地震",            "flag": "重庆4.8级地震",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E9%87%8D%E5%BA%864.8%E7%BA%A7%E5%9C%B0%E9%9C%87",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "内蒙古现罕见日柱",            "flag": "内蒙古现罕见日柱",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E5%86%85%E8%92%99%E5%8F%A4%E7%8E%B0%E7%BD%95%E8%A7%81%E6%97%A5%E6%9F%B1",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "女歌手本兮22岁逝世",            "flag": "女歌手本兮22岁逝世",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E5%A5%B3%E6%AD%8C%E6%89%8B%E6%9C%AC%E5%85%AE22%E5%B2%81%E9%80%9D%E4%B8%96",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "蒋劲夫托举佟丽娅",            "flag": "蒋劲夫托举佟丽娅",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E8%92%8B%E5%8A%B2%E5%A4%AB%E6%89%98%E4%B8%BE%E4%BD%9F%E4%B8%BD%E5%A8%85",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "打工钱被咬成碎片",            "flag": "打工钱被咬成碎片",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E6%89%93%E5%B7%A5%E9%92%B1%E8%A2%AB%E5%92%AC%E6%88%90%E7%A2%8E%E7%89%87",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "村民发现奇石似飞碟",            "flag": "村民发现奇石似飞碟",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E6%9D%91%E6%B0%91%E5%8F%91%E7%8E%B0%E5%A5%87%E7%9F%B3%E4%BC%BC%E9%A3%9E%E7%A2%9F",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "环卫夫妻身高不足一米四",            "flag": "环卫夫妻身高不足一米四",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E7%8E%AF%E5%8D%AB%E5%A4%AB%E5%A6%BB%E8%BA%AB%E9%AB%98%E4%B8%8D%E8%B6%B3%E4%B8%80%E7%B1%B3%E5%9B%9B",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "沙滩现巨大黑色怪物",            "flag": "沙滩现巨大黑色怪物",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E6%B2%99%E6%BB%A9%E7%8E%B0%E5%B7%A8%E5%A4%A7%E9%BB%91%E8%89%B2%E6%80%AA%E7%89%A9",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "黄子韬搂何炅",            "flag": "黄子韬搂何炅",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E9%BB%84%E5%AD%90%E9%9F%AC%E6%90%82%E4%BD%95%E7%82%85",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "2016nba圣诞大战",            "flag": "2016nba圣诞大战",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=2016nba%E5%9C%A3%E8%AF%9E%E5%A4%A7%E6%88%98",            "hot": "0",            "fromurl": "",            "photos": []        }]);
+
+    
+        app.init();
+    app.run();
+});
+}();
+!function(){    window.tn = 'result';
+    window.vsid = 'f45f014ec413962f0e081f613cd616f8eaad4cfe';
+    if ('index' === window.tn
+        || 'result' === window.tn
+        || 'detail' === window.tn) {
+        var sttb = document.getElementById('sttb');
+        sttb.removeAttribute && sttb.removeAttribute('title');
+    }
+    /**
+     * 统计代码
+    **/
+    window.ss = function(){
+        var URL = '//imgstat.baidu.com/9.gif?rainbow=1&';
+        function request(url){
+            var seed = Math.random();
+            var img = window[seed] = new Image;
+            img.onload = img.onerror = function(){
+                window[seed] = null;
+                img.onload = img.onerror = null;
+                img = null;
+            };
+            img.src = url;
+        }
+
+        /* p = 0, 首页八张demo图片点击统计
+         * p = 1, 结果页tab相关： name=stu相同tab显示；name=face 人脸搜索tab显示; type=show展现；type=click点击
+         * p = pv, 结果页PV统计：data=1，有结果；data=0无结果；data=-1，down页面
+         **/
+
+        return function(arg, url, e){
+            var s = URL + json2Query(arg) + '&' + Math.random();
+            request(s);
+            if(url){
+                setTimeout(function(){
+                    location.href = url;
+                }, 300);
+                e = e || window.event;
+                if(e){
+                    if(e.preventDefault){
+                        e.preventDefault();
+                    }else{
+                        e.returnValue = false;
+                    }
+                }
+
+            }
+        };
+
+    }();
+    window.__originTitle = document.title;
+    function json2Query(json){
+        if(json == null || typeof json != 'object') return json;
+        var query = [];
+        for(var i in json){
+            if(i != '')
+                query[query.length] = i + '=' + json[i];
+        }
+        return query.join('&');
+    }
+
+    require.async(["common:widget/ui/base/base","common:widget/shitu/run"],function($, shitu){
+        window.$ = $;
+        $(document).ready(function() {
+            var st = new shitu();
+            st.init();
+            window.stInstance = st;
+        });
+    });
+}();
+!function(){require.async(["searchresult:widget/searchBox/imgFilter/init"],function(filter){
+	filter.init();
+})
+
+
+}();
+!function(){    if (window.hotspotData) {
+        require.async(['searchresult:widget/pagelets/base/timeliness/init'], function (Timeliness) {
+            new Timeliness().init(window.hotspotData);
+        });
+    }
+}();
+!function(){/**
+* isRefresh 用来判断禁止se或查询的参数是否生效,false表示无须清零，true表示需要清零
+*/
+require.async(["common:widget/ui/base/base","searchresult:widget/ui/utils/utils","common:widget/ui/historyRecord/historyRecord"],function( $, utils, HistoryRecord){
+
+    window.s_submit = function(form,isRefresh){
+
+
+//图片url检索跳转
+var keyword = form.word.value;
+
+if ($.trim(keyword).length > 0) {
+    var historyRecord = new HistoryRecord({historyKey: 'indexPageSugList'});
+    historyRecord.setRecord(keyword);
+    $.cookie.set('cleanHistoryStatus', 0, {path: '/'});
+}
+
+
+var tiaoma = /^[\s]*http[s]*\:\/\/[\s\S]*\.[jpg|gif|png|bmp|jpeg]*[\s]*$/.test(keyword) ||/img5\.imgtn\.bdimg\.com/.test(keyword) || /mt1\.baidu\.com\/timg/.test(keyword);
+var jumpURL = '/n/pc_search?queryImageUrl='+encodeURIComponent(keyword)+'&fm=searchresult&pos=urlsearch&uptype=urlsearch';
+
+
+        if (tiaoma) {
+            // speed
+            $.cookie('uploadTime', new Date().getTime(), {path: '/'});
+
+           location.href = jumpURL;
+           return false;
+        }
+
+
+        var searchConf = utils.query2Json(utils.escapeXSS(window.location.search.substring(1)));
+        if(typeof searchConf.fm == "undefined"){searchConf.fm = '';}
+        if(typeof searchConf.fmq == "undefined"){searchConf.fmq = '';}
+        if(utils.trim(searchConf.queryWord) == form.word.value){
+            form.fmq.value = utils.fmqValueSet();
+        }else{
+            var fmqDate = new Date();
+            var T = fmqDate.getTime();
+            if(searchConf.fmq.indexOf('m') > -1 && searchConf.fmq.indexOf('_m') == -1 && searchConf.fmq.indexOf('_R') == -1){
+                var fmqvalue = searchConf.fmq;
+                form.fmq.value = T + '_' +fmqvalue + '_R';
+            }else{
+                form.fmq.value =  T + '_R';
+            }
+
+        }
+        var isflip = $('body').hasClass('flip');
+        form.tn.value = "baiduimage";
+
+        form.ct.value = "201326592";
+        form.cl.value = "2";
+        form.lm.value = "-1";
+        form.pv.value = "";
+        form.action = "/search/index";
+        if (window.canUseHttps) {
+            form.action = 'https://' + window.location.host + '/search/index';
+        }
+
+        if(isflip) {
+            form.action = "/search/flip";
+        }
+        if(isRefresh == true){
+            // submit直接提交新query
+            form.se.value = "1";
+        }else{
+            var showtab =  parseInt(searchConf.showtab);
+            if(!isNaN(showtab)&&showtab>0){
+                form.showtab.value = showtab;
+            }
+        }
+        form.ctd.value = (+new Date()) + "^00_" + $(window).width() + "X" +  window.innerHeight;
+
+        return true;
+    }
+})
+
+}();
+!function(){
+		window.bid = 69;
+
+	if(!window.passport){
+	    var script = document.createElement("script");
+	    script.src = '//passport.baidu.com/passApi/js/uni_login_wrapper.js?cdnversion=' + (new Date).getTime();
+	    document.body.appendChild(script);
+	}
+	require.async(["common:widget/loginbar/loginbar"],function(loginbar){
+
+	    loginbar.init();        
+
+	});
+
+
+}();
+!function(){    require.async(['searchresult:widget/pagelets/base/backTop/init']);
+}();
+!function(){            
+        require.async(['common:widget/ui/sourcehttps/sourcehttps'], function(init){
+            init({
+                tn: 'baiduimage',
+                word: '%E7%8B%97',
+                sample: 100 - 0
+            });
+        });
+        var img = new Image();
+        img.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1467190779130&di=ba3e0f927cfa5852f26f805954882af7&imgtype=png&src=http%3A%2F%2Fimg1.bdstatic.com%2Fstatic%2Fcommon%2Fwidget%2Fshitu%2Fimages%2Fcamera_b659d28.png';
+    
+    }();
+!function(){    require.async(['common:widget/ui/monitorRequest/monitorRequest'],function(monitorRequest){
+	var userid = "";
+	var q = "%E7%8B%97";
+	var tn = "result";
+	var host = "//imgstat.baidu.com/4.gif";
+	var hostSweb = "//image.baidu.com/pv/pv2.gif";
+    var rsw = "";
+    if(location.href !== document.referrer && document.referrer != ""){
+        rsw = "&rs=";
+    }
+    else{
+        rsw = '';
+    }
+    var samplekey = window.samplekey || '';
+    var img = window["__log__" + (new Date()).getTime()*Math.random()] = document.createElement('img');
+    monitorRequest( host + "?logid=13890932421618734054&ie=utf-8&q="+ q +"&userid=" + userid + "&samplekey=" + encodeURIComponent(samplekey) + "&event_type=pv&tn=" + tn + "&tpl=result.page&fr=" + rsw);
+    var imgSweb = window["__log__" + (new Date()).getTime()*Math.random()] = document.createElement('img');
+    imgSweb.src = hostSweb + "?ie=utf-8&q="+ q +"&userid=" + userid + "&samplekey=" + encodeURIComponent(samplekey) + "&event_type=pv&tn=" + tn + "&tpl=&fr=" + rsw + '&' + new Date() * Math.random();
+    });
+}();
+!function(){    require.async(["common:widget/ui/fmCheck/fmCheck"],function(fmCheck){
+        fmCheck.init();
+    });
+}();
+!function(){require.async(['common:widget/ui/base/base'], function($) {
+    var userFrom = '';
+
+    var elem = document.createElement('a');
+    elem.href = document.referrer;
+    var hostname = elem['hostname'];
+    var urlfr = '';
+    var chenjin = '';
+    var urlword = '%E7%8B%97';
+
+    if (hostname !== 'image.baidu.com') {
+        if (urlfr) {
+            userFrom += urlfr;
+            if (chenjin === '1') {
+                userFrom += 'chenjin1';
+            } else if (chenjin === '0') {
+                var wordList = ["%E7%BE%8E%E5%A5%B3%E5%9B%BE%E7%89%87",
+                    "%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8",
+                    "%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8%E5%9B%BE%E7%89%87",
+                    "%E5%A4%B4%E5%83%8F",
+                    "%E5%A4%B4%E5%83%8F%E5%9B%BE%E7%89%87"];
+                if (wordList.indexOf(urlword) >= 0) {
+                    userFrom += 'chenjin0';
+                }
+            }
+        } else {
+            userFrom = hostname;
+        }
+    } else {
+        userFrom = $.cookie('userFrom') || '';
+    }
+
+    if (userFrom.length > 0) {
+        var date = new Date();
+        date.setTime(date.getTime() + (10 * 60 * 1000));
+        $.cookie('userFrom', userFrom, {path: '/', expires: date, domain: '.baidu.com'});
+    } else {
+        $.cookie('userFrom', null, {path: '/', domain: '.baidu.com'});
+    }
+});
+}();
+!function(){            require.async(["common:widget/ui/durationStat/durationStat"],function(durationStat){
+            durationStat.heartStart({
+                pageId: 2 - 0,
+                sid: '582d46bf8830e98d04c1606d75c70be081f4a31c',
+                cs: '',
+                word: '狗'
+            });
+        });
+    }();</script>   </html> <!--05226957090290232074092122-->
+<script> var _trace_page_logid = 0522695709; </script>

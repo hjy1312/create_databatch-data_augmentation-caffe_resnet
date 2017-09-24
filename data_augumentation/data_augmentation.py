@@ -1,6 +1,7 @@
 from data_utils import *
 import numpy as np
 import cv2
+import random
 from scipy.io import savemat,loadmat
 import cPickle
 from scipy.misc import imread, imresize, imsave,imshow,imrotate
@@ -85,9 +86,20 @@ def transform_data(x,y):
     x_rotate,y_rotate = rotate_data(x,y,45)
     x1 = np.concatenate((x,x_rotate),axis = 0)
     y1 = np.concatenate((y,y_rotate),axis = 0)
+    #shuffle
+    l = x1.shape[0]
+    indice = range(l)
+    random.shuffle(indice)
+    x1 = x1[indice]
+    y1 = y1[indice]
     x_tran,y_tran = translate_data(x1,y1,10,0)
     x2 = np.concatenate((x1,x_tran),axis = 0)
     y2 = np.concatenate((y1,y_tran),axis = 0)
+    l = x2.shape[0]
+    indice = range(l)
+    random.shuffle(indice)
+    x2 = x2[indice]
+    y2 = y2[indice]
     return x2,y2
 
 def main_do():
